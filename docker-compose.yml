@@ -3,7 +3,9 @@ version: '3.8'
 services:
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:8000 portfolio.wsgi:application
+    command: >
+      sh -c "watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- 
+      python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
       - static_volume:/app/staticfiles

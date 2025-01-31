@@ -12,6 +12,9 @@ def services (request):
 def blog (request):
     return render(request, 'pages/blog.html')
 
+def blog_details (request):
+    return render(request, 'pages/blog-details.html')
+
 def contact (request):
     return render(request, 'pages/contact.html')
 
