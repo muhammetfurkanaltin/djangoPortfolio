@@ -15,6 +15,8 @@ class Content(models.Model):
         ('team_member', 'Team Member'),
         ('clients', 'Clients'),
         ('comments', 'Comments'),
+        ('features', 'Features'),
+        ('blog', 'Blog'),
     ]
     
     category = models.ForeignKey(Category, on_delete=models.CASCADE)

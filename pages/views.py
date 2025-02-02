@@ -9,19 +9,22 @@ def index(request):
     return render(request, 'pages/index.html', {'contents': contents, 'services': services, 'cards': cards , 'clients': clients})
 
 def about(request):
+    clients = Content.objects.filter(category__slug='clients').filter(is_active=True)
     contents = Content.objects.filter(category__slug='team-member').filter(is_active=True)
-    return render(request, 'pages/about.html', {'contents': contents})
+    return render(request, 'pages/about.html', {'contents': contents, 'clients': clients})
 
 def services(request):
+    features = Content.objects.filter(category__slug='features').filter(is_active=True)
     services = Content.objects.filter(category__slug='services').filter(is_active=True)
 
-    return render(request, 'pages/services.html', {'services': services})
+    return render(request, 'pages/services.html', {'services': services , 'features': features})
 
 def service_details(request):
     return render(request, 'pages/service-details.html')
 
 def blog(request):
-    return render(request, 'pages/blog.html')
+    blogs= Content.objects.filter(category__slug='blog').filter(is_active=True)
+    return render(request, 'pages/blog.html', {'blogs': blogs})
 
 def blog_details(request):
     return render(request, 'pages/blog-details.html')

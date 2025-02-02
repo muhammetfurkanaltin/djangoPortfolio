@@ -16,8 +16,7 @@
           </ol>
         </nav>
       </div>
-    </div><!-- End Page Title -->
-
+    </div>
     <!-- About Section -->
     <section id="about" class="about section">
 
@@ -51,19 +50,15 @@
 
       </div>
 
-    </section><!-- /About Section -->
-
+    </section>
     <!-- Team Section -->
     <section id="team" class="team section light-background">
-
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Our Team</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
+      </div>
       <div class="container">
-
         <div class="row gy-4">
           {% for contents in contents %}
           <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
@@ -82,13 +77,11 @@
                 <span>{{ contents.description }}</span>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div>
           {% endfor %}
         </div>
       </div>
-
-    </section><!-- /Team Section -->
-
+    </section>
     <!-- Skills Section -->
     <section id="skills" class="skills section">
 
@@ -156,43 +149,25 @@
 
       </div>
 
-    </section><!-- /Skills Section -->
-
-
+    </section>
     <!-- Clients Section -->
     <section id="clients" class="clients section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Clients</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row g-0 clients-wrap">
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="{% static '/img/clients/client-1.png' %}" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="{% static '/img/clients/client-2.png' %}" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="{% static '/img/clients/client-3.png' %}" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-          <div class="col-xl-3 col-md-4 client-logo">
-            <img src="{% static '/img/clients/client-4.png' %}" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
-
-        </div>
-
+        <section id="clients" class="clients section"> 
+          <div class="container section-title" data-aos="fade-up">
+            <h2>Clients</h2>
+            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+          </div>
+          <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-0 clients-wrap">
+              {% for client in clients %}
+              <div class="col-xl-3 col-md-4 client-logo">
+                <img src="{% static 'img/clients/'|add:client.image %}" class="img-fluid" alt="{{ client.title }}">
+              </div>
+              {% endfor %}
+            </div>
+        </section>
       </div>
-
-    </section><!-- /Clients Section -->
-
+    </section>
   </main>
 {% endblock %}
