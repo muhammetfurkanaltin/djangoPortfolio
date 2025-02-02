@@ -3,12 +3,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-8pyj8d^tkw!9crcz8@kzb&p#2oky#@ce#vq5reh68tr27x7nm0'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-8pyj8d^tkw!9crcz8@kzb&p#2oky#@ce#vq5reh68tr27x7nm0')
 
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
 
 INSTALLED_APPS = [
     'pages',
@@ -58,7 +57,7 @@ DATABASES = {
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.environ.get('POSTGRES_HOST'),
-        'PORT': 5432,
+        'PORT': os.environ.get('POSTGRES_PORT', 5432),
     }
 }
 

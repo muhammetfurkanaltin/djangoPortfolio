@@ -1,36 +1,51 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Category, Content
 
-def index (request):
-    return render(request, 'pages/index.html')
+def index(request):
+    contents = Content.objects.filter(category__slug='hero-slayt').filter(is_active=True)
+    services = Content.objects.filter(category__slug='services').filter(is_active=True)
+    cards = Content.objects.filter(category__slug='portfolio').filter(is_active=True)
+    clients = Content.objects.filter(category__slug='clients').filter(is_active=True)
+    return render(request, 'pages/index.html', {'contents': contents, 'services': services, 'cards': cards , 'clients': clients})
 
-def about (request):
-    return render(request, 'pages/about.html')
+def about(request):
+    contents = Content.objects.filter(category__slug='team-member').filter(is_active=True)
+    return render(request, 'pages/about.html', {'contents': contents})
 
-def services (request):
-    return render(request, 'pages/services.html')
+def services(request):
+    services = Content.objects.filter(category__slug='services').filter(is_active=True)
 
-def blog (request):
-    return render(request, 'pages/blog.html')
+    return render(request, 'pages/services.html', {'services': services})
 
-def blog_details (request):
-    return render(request, 'pages/blog-details.html')
-
-def contact (request):
-    return render(request, 'pages/contact.html')
-
-def service_details (request):
+def service_details(request):
     return render(request, 'pages/service-details.html')
 
-def pricing (request):
+def blog(request):
+    return render(request, 'pages/blog.html')
+
+def blog_details(request):
+    return render(request, 'pages/blog-details.html')
+
+def contact(request):
+    return render(request, 'pages/contact.html')
+
+def pricing(request):
     return render(request, 'pages/pricing.html')
 
-def portfolio (request):
-    return render(request, 'pages/portfolio.html')
+def portfolio(request):
+    cards = Content.objects.filter(category__slug='portfolio').filter(is_active=True)
+
+    return render(request, 'pages/portfolio.html', {'cards': cards})
+
+def portfolio_details(request):
+    return render(request, 'pages/portfolio-details.html')
 
 def about_team(request, get_about):
     if get_about == 'team':
-        return render(request, 'pages/team.html')
+        contents = Content.objects.filter(category__slug='team-member')
+        return render(request, 'pages/team.html', {'contents': contents})
     elif get_about == 'testimonials':
-        return render(request, 'pages/testimonials.html')
+        comments = Content.objects.filter(category__slug='comments')
+        return render(request, 'pages/testimonials.html', {'comments': comments})
     else:
         return render(request, 'pages/about.html')

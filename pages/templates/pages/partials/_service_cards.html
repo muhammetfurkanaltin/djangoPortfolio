@@ -1,0 +1,14 @@
+{% for service in services %}
+<div class="col-lg-4 col-md-6" data-aos="fade-up">
+  <div class="service-item position-relative">
+    <div class="icon">
+      <svg>...</svg>
+      <i class="bi {{ service.extra_data.icon }}"></i>
+    </div>
+    <a href="{% url 'service_detail' service.id %}" class="stretched-link">
+      <h3>{{ service.title }}</h3>
+    </a>
+    <p>{{ service.description }}</p>
+  </div>
+</div>
+{% endfor %}
