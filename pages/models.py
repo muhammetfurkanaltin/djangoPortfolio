@@ -17,6 +17,7 @@ class Content(models.Model):
         ('comments', 'Comments'),
         ('features', 'Features'),
         ('blog', 'Blog'),
+        ('product', 'Product'),
     ]
     
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -30,3 +31,20 @@ class Content(models.Model):
 
     def __str__(self):
         return self.title
+
+class ContactForm(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=15)
+    messages = models.CharField(max_length=250)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.IntegerField(default=0)
+    file = models.FileField(upload_to='product_files/',blank=True, null=True)
+    url = models.URLField()
+    def __str__(self):
+        return self.name
+    def get_display_price(self):
+        return "{0:.2f}".format(self.price/100 )
