@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 
 from pages.forms import SendForm
-from portfolio import settings
+from django.conf import settings
 from .models import  Content, Product
 import stripe # type: ignore
 
@@ -45,13 +45,6 @@ def contact(request):
     return render(request, 'pages/contact.html', {'form': form})
         
 stripe.api_key = settings.STRIPE_SECRET_KEY
-import stripe
-from django.conf import settings
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .models import Product
-
-stripe.api_key = settings.STRIPE_SECRET_KEY  # API Key yüklü mü kontrol et
 
 def pricing(request):
     plans = Product.objects.all()
