@@ -1,5 +1,5 @@
 Django==4.2
-
+stripe
 psycopg2-binary==2.9.6
 whitenoise==6.6.0
 gunicorn==20.1.0
