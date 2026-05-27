@@ -7,8 +7,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-8pyj8d^tkw!9cr
 
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = [
+    "djangoportfolioo.up.railway.app",
+]
 INSTALLED_APPS = [
     'pages',
     'django.contrib.admin',
@@ -98,3 +99,7 @@ STATICFILES_DIRS = [
 STRIPE_PUBLIC_KEY = 'pk_test_TYooMQauvdEDq54NiTphI7jx'
 STRIPE_SECRET_KEY = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
 SITE_URL =  'http://localhost:8000'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://djangoportfolioo.up.railway.app",
+]
